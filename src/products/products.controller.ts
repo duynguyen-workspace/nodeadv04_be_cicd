@@ -23,11 +23,11 @@ export class ProductsController {
     return this.productsService.findAll();
   }
 
-  @Get("get-all-mysql")
-  findAllMysql() {
+  // @Get("get-all-mysql")
+  // findAllMysql() {
 
-    return this.productsService.findAllMysql();
-  }
+  //   return this.productsService.findAllMysql();
+  // }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
