@@ -10,5 +10,5 @@ jobs: # định nghĩa job sẽ thực hiện
     runs-on: ubuntu-latest # hệ điều hành job được chạy
     steps: # Các bước cụ thể mà job sẽ thực hiện
       - run: echo "hello" # Chạy một lệnh shell (cli)
-      - run: curl https://apistore.cybersoft.edu.vn/api/Product
+      - run: curl http://170.64.152.28:8081/products/get-all-mysql
 # with: Truyền tham số hoặc biến vào action, giúp tùy chỉnh hành vi của action.
