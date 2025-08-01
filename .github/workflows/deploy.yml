@@ -1,0 +1,14 @@
+name: Deploy VPS # đặt tên cho workflow
+
+on:
+  push:
+    branches: # Workflow này sẽ được kích hoạt khi có một commit được push lên nhánh main.
+      - main
+
+jobs: # định nghĩa job sẽ thực hiện
+  build-demo: # đặt tên job
+    runs-on: ubuntu-latest # hệ điều hành job được chạy
+    steps: # Các bước cụ thể mà job sẽ thực hiện
+      - run: echo "hello" # Chạy một lệnh shell (cli)
+      - run: curl https://apistore.cybersoft.edu.vn/api/Product
+# with: Truyền tham số hoặc biến vào action, giúp tùy chỉnh hành vi của action.
