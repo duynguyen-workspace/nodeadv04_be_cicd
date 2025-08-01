@@ -14,7 +14,7 @@ jobs: # định nghĩa job sẽ thực hiện
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USERNAME }}
-        key: ${{ secrets.VPS_KEY }}
+        key: ""
         script: |
           cd ./nodeadv04_be_cicd
           git pull
@@ -27,6 +27,24 @@ jobs: # định nghĩa job sẽ thực hiện
           # docker-compose build
           # docker-compose up -d
           # docker images -f "dangling=true" -q | xargs docker rmi
+
+  notify:
+    runs-on: ubuntu-latest
+    if: failure() # Chỉ chạy job này nếu job build thất bại
+    needs: build
+    steps:
+    - name: Notify failure mail
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{ secrets.VPS_EMAIL }}
+        password: ${{ secrets.VPS_EMAIL_PW }}
+        subject: 'GitHub Action Failed'
+        body: 'The GitHub Action workflow has failed.'
+        to: ${{ secrets.VPS_EMAIL }}
+        from: ${{ secrets.VPS_EMAIL }}
+
 
 
 # jobs: # định nghĩa job sẽ thực hiện
