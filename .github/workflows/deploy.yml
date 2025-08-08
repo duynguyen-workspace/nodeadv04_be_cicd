@@ -27,7 +27,7 @@ jobs: # định nghĩa job sẽ thực hiện
     #       docker-compose build
     #       docker-compose up -d
     #       docker images -f "dangling=true" -q | xargs docker rmi
-    - run: curl http://170.64.152.28:8888/cicd 
+    - run: curl -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30" http://170.64.152.28:8888/cicd
 
   # notify:
   #   runs-on: ubuntu-latest
