@@ -9,24 +9,25 @@ jobs: # định nghĩa job sẽ thực hiện
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Deploy to VPS
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USERNAME }}
-        key: ${{ secrets.VPS_KEY }}
-        script: |
-          cd ./nodeadv04_be_cicd
-          git pull
-          docker build . -t cicd
-          docker stop cicd 
-          docker rm cicd
-          docker run -d -p 8081:8080 --name cicd --net nodeadv-net cicd
+    # - name: Deploy to VPS
+    #   uses: appleboy/ssh-action@v1.0.3
+    #   with:
+    #     host: ${{ secrets.VPS_HOST }}
+    #     username: ${{ secrets.VPS_USERNAME }}
+    #     key: ${{ secrets.VPS_KEY }}
+    #     script: |
+    #       cd ./nodeadv04_be_cicd
+    #       git pull
+    #       # docker build . -t cicd
+    #       # docker stop cicd 
+    #       # docker rm cicd
+    #       # docker run -d -p 8081:8080 --name cicd --net nodeadv-net cicd
 
-          # docker-compose down
-          # docker-compose build
-          # docker-compose up -d
-          # docker images -f "dangling=true" -q | xargs docker rmi
+    #       docker-compose down
+    #       docker-compose build
+    #       docker-compose up -d
+    #       docker images -f "dangling=true" -q | xargs docker rmi
+    - run: curl http://170.64.152.28:8888/cicd 
 
   # notify:
   #   runs-on: ubuntu-latest
