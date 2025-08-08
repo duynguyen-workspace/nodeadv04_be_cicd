@@ -18,15 +18,15 @@ jobs: # định nghĩa job sẽ thực hiện
         script: |
           cd ./nodeadv04_be_cicd
           git pull
-          # docker build . -t cicd
-          # docker stop cicd 
-          # docker rm cicd
-          # docker run -d -p 8081:8080 --name cicd --net nodeadv-net cicd
-          
-          docker-compose down
-          docker-compose build
-          docker-compose up -d
-          docker images -f "dangling=true" -q | xargs docker rmi
+          docker build . -t cicd
+          docker stop cicd 
+          docker rm cicd
+          docker run -d -p 8081:8080 --name cicd --net nodeadv-net cicd
+
+          # docker-compose down
+          # docker-compose build
+          # docker-compose up -d
+          # docker images -f "dangling=true" -q | xargs docker rmi
 
   # notify:
   #   runs-on: ubuntu-latest
