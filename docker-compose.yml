@@ -1,0 +1,18 @@
+services:
+  backend:
+    container_name: cicd
+    build: .
+    # image: khai báo tên ứng dụng
+    ports: 
+      - 8081:8080
+
+    networks: 
+      - nodeadv04-net
+
+networks: 
+  nodeadv04-net:
+    external: true # network đã tồn tại trước đó
+
+# docker-compose up -d == docker run x6
+#! env_file KHÔNG DÙNG CHUNG với environment
+#? env_file có thể không cần khai báo
